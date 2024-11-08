@@ -17,23 +17,37 @@ minShouldWork = 7
 
 dividerLength = 60
 
-def dayHoursWorked(_day):
-    daysWorked.append(int(input(f"Enter hours worked on Day #{_day + 1}: ")))
+def corrector(_minValue: int, _maxValue: int, _input: str, _errorMessage: str, _day):
+    if int(_input) < _minValue or int(_input) > _maxValue:
+        print(_errorMessage)
+        return corrector(_minValue, _maxValue, int(input(f"Enter hours worked on Day #{_day + 1}: ")), _errorMessage, _day)
+    else:
+        return _input
+
+def dayHoursWorked(_day, _list):
+    _list.append(corrector(1,23,int(input(f"Enter hours worked on Day #{_day + 1}: ")),"That Number is Out of Range. Try Again.",_day))
+
+def EnterHoursWorked(_daysWorked: list, _daysWithMaxHours: list, _indexMaxHours: list, _workDays: int):
+    for i in range(_workDays):
+        dayHoursWorked(i, _daysWorked)
+
+    for i in range(len(_daysWorked)):
+        if daysWorked[i] == max(_daysWorked):
+            daysWithMaxHours.append(max(_daysWorked))
+            _indexMaxHours.append(i)
+
+def CalculateHoursWorked(_maxHoursWorked, _totalHoursWorked, _averageHoursWorked, _daysWorked, _workDays):
+    _maxHoursWorked = int(max(_daysWorked))
+    _totalHoursWorked = int(sum(_daysWorked))
+    _averageHoursWorked = float(_totalHoursWorked / _workDays)
+
 
 def main():
     # YOUR CODE STARTS HERE, each line must be indented (one tab)
 
-    for i in range(workDays):
-        dayHoursWorked(i)
+    EnterHoursWorked(daysWorked,daysWithMaxHours,indexMaxHours,workDays)
+    CalculateHoursWorked(maxHoursWorked, totalHoursWorked, averageHoursWorked, daysWorked, workDays)
 
-    for i in range(len(daysWorked)):
-        if daysWorked[i] == max(daysWorked):
-            daysWithMaxHours.append(max(daysWorked))
-            indexMaxHours.append(i)
-        
-    maxHoursWorked = int(max(daysWorked))
-    totalHoursWorked = int(sum(daysWorked))
-    averageHoursWorked = float(totalHoursWorked / workDays)
 
     print("-"*dividerLength)
     print("The most hours worked on:")
