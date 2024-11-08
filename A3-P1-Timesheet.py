@@ -7,6 +7,8 @@
 #Student Name:  Alex Barr
 
 daysWorked = []
+daysWithMaxHours = []
+indexMaxHours = []
 maxHoursWorked = 0.0
 totalHoursWorked = 0.0
 averageHoursWorked = 0.0
@@ -22,8 +24,12 @@ def main():
     # YOUR CODE STARTS HERE, each line must be indented (one tab)
 
     for i in range(workDays):
-        _hours = dayHoursWorked(i)
+        dayHoursWorked(i)
 
+    for i in range(len(daysWorked)):
+        if daysWorked[i] == max(daysWorked):
+            daysWithMaxHours.append(max(daysWorked))
+            indexMaxHours.append(i)
         
     maxHoursWorked = int(max(daysWorked))
     totalHoursWorked = int(sum(daysWorked))
@@ -31,7 +37,8 @@ def main():
 
     print("-"*dividerLength)
     print("The most hours worked on:")
-    print(f"Day #{daysWorked.index(maxHoursWorked) + 1} when you worked {maxHoursWorked}.")
+    for i in range(len(daysWithMaxHours)):
+        print(f"Day #{indexMaxHours[i] + 1} when you worked {daysWithMaxHours[i]} hours.")
     print("-"*dividerLength)
 
     print(f"The total number of hours worked was: {totalHoursWorked}")
