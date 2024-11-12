@@ -6,6 +6,10 @@
 #Student #:     W0487099
 #Student Name:  Alex Barr
 
+"""
+For this assignment, I tried to put everything into functions and then use those functions as pseudo-code. I used a "try/except" statement I learned
+from a youtube short, it may be a bit janky; I'm still not 100% how to use it and I probably overcoded it, but it works so I'm going to leave it for now.
+"""
 
 #This function determines that only correct values can be inputted by the user
 def corrector(_minValue: int, _maxValue: int, _input: str, _errorMessage: str, _day):
@@ -82,9 +86,15 @@ def main():
     dividerLength = 60
 
     EnterHoursWorked(daysWorked,daysWithMaxHours,indexMaxHours,workDays)
+    
+    #Calculate hours worked and place them in variables
     maxHoursWorked, totalHoursWorked, averageHoursWorked = CalculateHoursWorked(daysWorked, workDays) #looked up how to get multiple values on stack overflow
+    
     ShowProductiveDaysAndAverage(daysWithMaxHours, indexMaxHours, averageHoursWorked, totalHoursWorked, dividerLength)
+    
     ShowSlackOffDays(daysWorked, minShouldWork, workDays)
+
+    print("")
 
     # YOUR CODE ENDS HERE
 
