@@ -19,18 +19,15 @@ def corrector(_minValue: int, _maxValue: int, _input: str, _errorMessage: str, _
             if int(_input) < _minValue or int(_input) > _maxValue:
                 print(_errorMessage)
                 return corrector(_minValue, _maxValue, (input(f"Enter hours worked on Day #{_day + 1}: ")), _errorMessage, _day)
-                break
             else:
                 return int(_input)
-                break
         except ValueError:
             print(_errorMessage)
             return corrector(_minValue, _maxValue, (input(f"Enter hours worked on Day #{_day + 1}: ")), _errorMessage, _day)
-            break
 
 #This function is part of the next function and it appends user information to a list; In this case hours worked to a list of days worked
 def dayHoursWorked(_day, _list):
-    _list.append(corrector(1,23,(input(f"Enter hours worked on Day #{_day + 1}: ")),"Value Invalid. Try Again.",_day))
+    _list.append(corrector(1,24,(input(f"Enter hours worked on Day #{_day + 1}: ")),"Value Invalid. Try Again.",_day))
 
 #This function prompts the user to input amount of hours worked per day, for as many days are in the workDays variable
 def EnterHoursWorked(_daysWorked: list, _daysWithMaxHours: list, _indexMaxHours: list, _workDays: int):
@@ -88,7 +85,7 @@ def main():
     EnterHoursWorked(daysWorked,daysWithMaxHours,indexMaxHours,workDays)
     
     #Calculate hours worked and place them in variables
-    maxHoursWorked, totalHoursWorked, averageHoursWorked = CalculateHoursWorked(daysWorked, workDays) #looked up how to get multiple values on stack overflow
+    maxHoursWorked, totalHoursWorked, averageHoursWorked = CalculateHoursWorked(daysWorked, workDays) # I looked up how to get multiple values on stack overflow
     
     ShowProductiveDaysAndAverage(daysWithMaxHours, indexMaxHours, averageHoursWorked, totalHoursWorked, dividerLength)
     
